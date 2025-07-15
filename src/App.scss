@@ -1,0 +1,31 @@
+@use './Reset' as *;
+
+
+.header {
+  width: 100%;
+  height: 150px;
+  background: #2f3837;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .logo {
+    width: 43px;
+    height: 43px;
+    margin-left: 30px;
+    fill: #fff5d3;
+    z-index: 2; 
+  }
+
+  .site-title {
+    position: absolute;  
+    left: 50%;           
+    transform: translateX(-50%); 
+    font-size: 55px;
+    font-weight: 400;
+    color: #fff;
+    z-index: 1;
+    font-family: 'Abhaya Libre', serif;
+  }
+}
+
