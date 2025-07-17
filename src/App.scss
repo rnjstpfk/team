@@ -1,4 +1,9 @@
 @use './Reset' as *;
+.content {
+  min-height: calc(100vh - 200px); // header(100) + footer(100) 제외
+  padding: 40px 20px;
+}
+
 
 .header {
   width: 100%;
@@ -155,6 +160,17 @@
     font-family: 'Abhaya Libre', serif;
   }
 }
+/* 푸터 바닥에 */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // 전체 높이
+
+  .main-content {
+    flex: 1; // 남는 공간 다 차지해서 푸터 밀어내기
+  }
+}
+
 
 
 
@@ -171,3 +187,7 @@
   text-align: center;
   color: #333;
 }
+
+
+
+

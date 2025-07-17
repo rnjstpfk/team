@@ -1,0 +1,58 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px); // header, footer 높이 제외
+  background: #f9f9f9;
+
+  .signup-box {
+    width: 500px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    text-align: center;
+
+    h2 {
+      color: #8a1e1e;
+      margin-bottom: 30px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      input {
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #8a1e1e;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 12px;
+        font-size: 16px;
+        background: #8a1e1e;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 30px;
+
+        &:hover {
+          background: #6e1818;
+        }
+      }
+    }
+  }
+}

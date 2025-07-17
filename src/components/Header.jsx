@@ -44,7 +44,9 @@ const Header = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img src="/img/logo1.png" alt="로고" />
+          <Link to="/">
+            <img src="/img/logo1.png" alt="로고" />
+          </Link>
 
           {menuOpen && (
             <div
@@ -63,11 +65,14 @@ const Header = () => {
           )}
         </div>
 
-        <Link to="/mian" className="site-title">
+        <Link to="/main" className="site-title">
           Archive Musée
         </Link>
 
-        <IoMdPerson className="login" />
+        <Link to="/login">
+          <IoMdPerson className="login" />
+        </Link>
+
         <FaSearch className="search" onClick={toggleSearch} />
       </header>
 
