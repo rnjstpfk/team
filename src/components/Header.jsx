@@ -1,11 +1,98 @@
-import { ReactComponent as Logo } from './logo.svg';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
+
+import { FaSearch } from "react-icons/fa";
+import { IoMdPerson } from "react-icons/io";
+import { IoMdClose } from "react-icons/io"; // X 아이콘
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const timeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutRef.current);
+    setMenuOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setMenuOpen(false);
+    }, 200);
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen((prev) => !prev);
+    setSearchText(''); // 검색창 열릴 때 자동 초기화 (원하면 제거해도 돼)
+  };
+
+  // 스크롤 잠금
+  useEffect(() => {
+    const shouldLock = menuOpen || searchOpen;
+    document.body.style.overflow = shouldLock ? 'hidden' : 'auto';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [menuOpen, searchOpen]);
+
   return (
-    <header className="header">
-      <Logo className="logo" />
-      <h1 className="site-title">Archive Musée</h1>
-    </header>
+    <>
+      <header className="header">
+        <div
+          className="logo-container"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <img src="/img/logo1.png" alt="로고" />
+
+          {menuOpen && (
+            <div
+              className="logo-menu"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <ul>
+                <li><Link to="/museums">Museums</Link></li>
+                <li><Link to="/categories">Categories</Link></li>
+                <li><Link to="/artifacts">Artifacts</Link></li>
+                <li><Link to="/about">About</Link></li>
+              </ul>
+
+            </div>
+          )}
+        </div>
+
+        <Link to="/mian" className="site-title">
+          Archive Musée
+        </Link>
+
+        <IoMdPerson className="login" />
+        <FaSearch className="search" onClick={toggleSearch} />
+      </header>
+
+      {searchOpen && (
+        <div className="search-box">
+          <div className="search-input-wrapper">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+            {searchText && (
+              <button
+                className="search-clear"
+                onClick={() => setSearchText('')}
+              >
+                <IoMdClose />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
