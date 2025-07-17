@@ -8,7 +8,7 @@ import Homemain from './components/Homemain';
 import Main from './pages/Main';
 import Login from './pages/Login';
 import Signup from './pages/Singup';
-
+import Museums from './pages/Museums';
 
 // 필요한 페이지들 import
 function App() {
@@ -21,6 +21,7 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/museums" element={<Museums />} />
         </Routes>
       </main>
       <Footer />
