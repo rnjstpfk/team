@@ -9,6 +9,7 @@ import Main from './pages/Main';
 import Login from './pages/Login';
 import Signup from './pages/Singup';
 import Museums from './pages/Museums';
+import ArtworkDetail from './pages/ArtworkDetail';
 
 // 필요한 페이지들 import
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homemain />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/artwork/:id" element={<ArtworkDetail />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/museums" element={<Museums />} />
