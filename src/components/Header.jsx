@@ -22,6 +22,16 @@ const Header = () => {
     }, 200);
   };
 
+
+
+  // 클릭 시 메뉴 토글
+const handleSubmenuToggle = (e) => {
+  e.stopPropagation();
+  const item = e.currentTarget;
+  item.classList.toggle('open');
+};
+
+
   const toggleSearch = () => {
     setSearchOpen((prev) => !prev);
     setSearchText(''); // 검색창 열릴 때 자동 초기화 (원하면 제거해도 돼)
@@ -55,7 +65,16 @@ const Header = () => {
               onMouseLeave={handleMouseLeave}
             >
               <ul>
-                <li><Link to="/museums">Museums</Link></li>
+                <li onClick={handleSubmenuToggle}>
+                  <Link to="">Museums</Link>
+                  <ul className="submenu">
+                    <li><Link to="/main">루브르</Link></li>
+                    <li><Link to="/museums/british-museum">대영</Link></li>
+                    <li><Link to="/museums/ermitage">에르미타주</Link></li>
+                    <li><Link to="/museums/metropolitan">메트로폴리탄</Link></li>
+                    <li><Link to="/museums/vatican">바티칸</Link></li>
+                  </ul>
+                </li>
                 <li><Link to="/categories">Categories</Link></li>
                 <li><Link to="/artifacts">Artifacts</Link></li>
                 <li><Link to="/about">About</Link></li>
